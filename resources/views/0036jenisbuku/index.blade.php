@@ -11,15 +11,21 @@
     <div class="container">
         <h2 class="mt-5">Data Buku</h2>
         <a href="{{route('jenis-buku.create')}}" class="button button-hijau">Add Data</a>
+
+        <form action="{{ route('jenis-buku.index') }}" method="GET">
+            <input type="text" name="search" id="" class="form-control">
+
+            <input type="submit" value="cari" class="btn btn-success">
+        </form>
         <table class="table table-bordered">
             <tr>
                 <th>No.</th>
                 <th>Jenis Buku</th>
                 <th>Action</th>
             </tr>
-            @foreach($buku as $bu => $b)
+            @foreach($buku as $b)
             <tr>
-                <td>{{$bu + 1}}</td>
+                <td>{{$loop->iteration}}</td>
                 <td>{{$b->jenis}}</td>
                 <td>
                     <a href="{{ route('jenis-buku.edit', $b->id) }}" class="btn btn-warning">Edit</a>

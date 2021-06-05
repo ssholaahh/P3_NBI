@@ -13,10 +13,9 @@ class JenisBukuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $buku = DB::table('jenis_buku')
-            ->get();
+        $buku = DB::table('jenis_buku')->where('jenis','LIKE', "%$request->search%")->get();
         return view('0036jenisbuku.index', [
             'buku' => $buku
         ]);
